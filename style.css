@@ -1,3 +1,23 @@
-p {
+.p {
   //border: solid;
+}
+
+.navbar-default{
+    background-color:white;
+    border-color: blue;
+}
+
+.thumbnail {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+
+   img {
+        width:920px
+        max-width: 920px; //only set this if using Twitter Bootstrap
+        position: absolute;
+        left:50%;
+        margin-left: -460px; //half of the image size
+    } 
+   }
 }
