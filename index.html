@@ -5,17 +5,34 @@
    <title>Igor's Site</title>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 <link href="style.css" rel="stylesheet">
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<style type="text/css">
+	.bs-example{
+    	margin: 20px;
+    }
+</style>
 </head>
 
 <body>
+
 
   <nav class="navbar navbar-default">
     <div class="container-fluid">      
       <!-- start un-collapsed navbar-->
         <ul class="nav navbar-nav">
           <li role="" class="active"><a href="index.html">Home</a></li>           
-          <li role="" ><a href="research.html">Research</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Research <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li><a href="research.html">Overview</a></li>
+			    <li><a href="facerecognition.html">Face Recognition</a></li>
+                            <li><a href="speechdenoising.html">Speech Denoising Headset</a></li>
+                        </ul>
+                    </li>
+ 
           <li role="" ><a href="publications.html">Publications</a></li>
           <li role="" ><a href="grants.html">Grants/Awards</a></li>
           <li role="" ><a href="resumeNew.pdf">CV</a></li>
