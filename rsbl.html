@@ -13,10 +13,10 @@
         margin: 20px;
     }
 </style>
-
 <script type="text/javascript" async
 	  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
+
 
 </head>
 
@@ -30,10 +30,10 @@
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle" class="active">Research <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
-                            <li class="active"><a href="research.html" class="active">Overview</a></li>
+                            <li ><a href="research.html" class="active">Overview</a></li>
 			    <li><a href="facerecognition.html">Robust Bayesian Simultaneous Block Sparse Signal Recovery with Applications to Face Recognition</a></li>	
                             <li><a href="nmf.html">Unified Bayesian Approach to Non-Negative Matrix Factorization</a></li>
-                            <li><a href="rsbl.html">Rectified Sparse Bayesian Learning</a></li>
+                            <li class="active"><a href="rsbl.html">Rectified Sparse Bayesian Learning</a></li>
 			    <li><a href="speechdenoising.html">Speech Denoising Headset</a></li>
                         </ul>
                     </li>
@@ -45,45 +45,26 @@
     </div> <!-- /container -->
   </nav>
 
-<div class="container">
-	<h1> Igor Fedorov </h1>           
-	<div class="container row-md-4 text-center">
-		 <div class="container col-md-6 col-sm-12">
-			 <div class="cliente">
-	 			<h2><a href="facerecognition.html" rel="nofollow">Robust Bayesian Simultaneous Block Sparse Signal Recovery with Applications to Face Recognition</a> </h2>
-				 <a href="facerecognition.html" rel="nofollow">
-				 <img src="face.png" class="img-rounded" alt="Cinque Terre" width="380" height="280"></a>	
-		 	</div>
-		</div>
-	
-		<div class="container col-md-6 col-sm-12">
-			<div class="cliente">
-				<h2><a href="nmf.html" rel="nofollow">Unified Bayesian Approach to Non-Negative Matrix Factorization </a> </h2>
-				<a href="nmf.html" rel="nofollow">
-				 <img src="l2_error_k400.png" class="img-rounded" alt="Cinque Terre" width="380" height="312"></a>	
-			</div>
-		</div>
-	</div>
-	
-	<div class="container row-md-4 text-center">
-		 <div class="container col-md-6 col-sm-12">
-			 <div class="cliente">
-	 			<h2><a href="rsbl.html" rel="nofollow">Rectified Sparse Bayesian Learning</a> </h2>
-				 <a href="rsbl.html" rel="nofollow">
-				 <img src="rsbl_results.png" class="img-rounded" alt="Cinque Terre" width="380" height="280"></a>	
-		 	</div>
-		</div>
-	
-		<div class="container col-md-6 col-sm-12">
-			<div class="cliente">
-				<h2><a href="speechdenoising.html" rel="nofollow">Speech Denoising Headset </a> </h2>
- 				<a href="speechdenoising.html" rel="nofollow">   
-				<img src="headset.jpg" class="img-rounded" alt="Cinque Terre" width="380" height="280"></a>	
-			</div>
-		</div>
-	</div>
-</div>
+ <div class="container">
+     <h1> Igor Fedorov </h1>       
+     <div class="container row-md-4">     
+     <div class="container col-md-12 col-sm-12 row-md-offset-2">
+	<h2> Rectified Sparse Bayesian Learning</h2>
+	The goal of this work is to solve the sparse non-negative least squares problem
+	$$ \text{argmin} \Vert y - \Phi x \Vert_2^2 \; \;  \text{subject to} \; \; x \geq 0, \Vert x \Vert_0 \leq L  $$
 
+	We extend the Sparse Bayesian Learning (SBL) framework used in Bayesian sparse signal recovery to non-negative signals. We investigate rectified Gaussian (RG) scale mixtures as a viable sparsity enforicing prior and develop efficient inference techniques. 
+	</div>
+     </div>
+     
+     <div class="container row-md-4 row-md-offset-2">
+     <div class="container col-md-12 col-sm-12">
+	<h3> Relevant Publications </h3>
+        <ul class="list-unstyled">
+	<li>A. Nalci, <em><b>I. Fedorov</em></b>, B.D. Rao, <a href="http://arxiv.org/abs/1601.06207" rel="nofollow">"Rectified Gaussian Scale Mixtures and the Sparse Non-Negative Least Squares Problem,"</a> <em>arXiv preprint arXiv:1601.06207</em>, 2016.</li>
+        </ul>
+      </div>
+      </div>
 <body>
 
 </html>
