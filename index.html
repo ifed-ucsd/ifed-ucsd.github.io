@@ -1,645 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Igor Fedorov</title>
+  <meta name="description" content="Igor Fedorov — AI Research Scientist at Meta working on large language model compression and efficient on-device machine learning.">
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Igor Fedorov">
+  <meta property="og:description" content="AI Research Scientist at Meta. Large language model compression and efficient on-device ML.">
+  <meta property="og:image" content="cover_photo.jpg">
+  <meta property="og:url" content="https://ifed-ucsd.github.io">
 
-<html>
-  <head>
-    <meta name="generator" content="HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org">
-    <style type="text/css">
-      /* Layout and HTML pieces the work of Jon Barron http://www.cs.berkeley.edu/~barron/ */
-      a {
-      color: #1772d1;
-      text-decoration:none;
-      }
-      a:focus, a:hover {
-      color: #f09227;
-      text-decoration:none;
-      }
-      body,td,th {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 18px
-      }
-      strong {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 18px
-      }
-      heading {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 18px;
-      font-weight: 700
-      }
-      #teaser-td {
-      text-align: center;
-      margin: auto; 
-      display: block;
-      }
-      #teaser {
-      width: 160px;
-      border-style: none;
-      }
-    </style>
-    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <title>Igor Fedorov</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
-    
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  <!-- Google Scholar indexing -->
+  <meta name="citation_author" content="Igor Fedorov">
 
-      ga('create', 'UA-65822884-2', 'auto');
-        ga('send', 'pageview');
-</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink:        #14151a;
+      --ink-soft:   #3c3f48;
+      --muted:      #74787f;
+      --bg:         #ffffff;
+      --surface:    #f6f7f9;
+      --line:       #e6e8ec;
+      --accent:     #2f4fd6;
+      --accent-ink: #233da9;
+      --accent-soft:#eef1fd;
+
+      --font-display: 'Space Grotesk', system-ui, sans-serif;
+      --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+      --maxw: 880px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink-soft);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color .15s ease;
+    }
+    a:hover { color: var(--accent-ink); }
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ---------- Header ---------- */
+    header.intro {
+      padding: 72px 0 8px;
+    }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 168px;
+      gap: 40px;
+      align-items: start;
+    }
+    .name {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(34px, 5vw, 46px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin: 0 0 6px;
+    }
+    .role {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 16px;
+      color: var(--accent);
+      margin: 0 0 22px;
+      letter-spacing: 0.01em;
+    }
+    .bio { margin: 0 0 16px; }
+    .bio p { margin: 0 0 14px; }
+
+    .headshot {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+    }
+
+    /* ---------- Contact links ---------- */
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+    }
+    .links a {
+      padding: 7px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--ink);
+      transition: border-color .15s ease, color .15s ease, background .15s ease;
+    }
+    .links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    /* ---------- Section heading ---------- */
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin: 64px 0 8px;
+    }
+    .section-head h2 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin: 0;
+      white-space: nowrap;
+    }
+    .section-head .rule {
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+    .count {
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+
+    /* ---------- Publications ---------- */
+    .pubs { margin: 8px 0 0; }
+
+    .pub {
+      display: grid;
+      grid-template-columns: 124px 1fr;
+      gap: 24px;
+      padding: 26px 0;
+      border-top: 1px solid var(--line);
+      align-items: start;
+    }
+    .pub:first-child { border-top: none; }
+
+    .thumb {
+      width: 124px;
+      height: 84px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform .25s ease;
+    }
+    .pub:hover .thumb img { transform: scale(1.05); }
+    .thumb.empty { background: repeating-linear-gradient(135deg, #fafbfc, #fafbfc 6px, #f3f4f6 6px, #f3f4f6 12px); }
+
+    .pub-title {
+      font-weight: 600;
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.4;
+      margin: 0 0 5px;
+    }
+    .authors {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+      margin: 0 0 9px;
+    }
+    .authors .me { color: var(--ink); font-weight: 600; }
+
+    .venue {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--accent-ink);
+      background: var(--accent-soft);
+      padding: 3px 9px;
+      border-radius: 6px;
+      margin-bottom: 9px;
+    }
+
+    .pub-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+    }
+    .pub-links a {
+      color: var(--ink);
+      border: 1px solid var(--line);
+      padding: 3px 10px;
+      border-radius: 6px;
+      transition: border-color .15s ease, color .15s ease;
+    }
+    .pub-links a:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ---------- Footer ---------- */
+    footer {
+      margin: 72px 0 56px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+
+    /* ---------- Entrance motion ---------- */
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    header.intro, .section-head, .pub {
+      animation: rise .5s ease both;
+    }
+    .pub:nth-child(1) { animation-delay: .02s; }
+    .pub:nth-child(2) { animation-delay: .04s; }
+    .pub:nth-child(3) { animation-delay: .06s; }
+    .pub:nth-child(4) { animation-delay: .08s; }
+    .pub:nth-child(5) { animation-delay: .10s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 640px) {
+      header.intro { padding-top: 48px; }
+      .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .headshot {
+        width: 120px;
+        aspect-ratio: 1 / 1;
+        order: -1;
+      }
+      .pub {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .thumb { width: 140px; height: 92px; }
+    }
+  </style>
 </head>
 
 <body>
-<table width="850" border="0" align="center" cellpadding="20">
-<tr>
-	      <td> 
+  <div class="wrap">
 
-          <table id="intro" width="100%" align="center" border="0" cellpadding="10">
-            <tr>
-              <td width="67%" valign="middle">
-		            <p align="center"><font size="8">Igor Fedorov</font></p>
-		            <p align="justify">
-                  I am an AI Research Scientist at Meta, where I am a tech lead for large language model compression and inference optimization for edge use cases. I have also been responsible for algorithm research and software development for neural architecture search on ads recommendation models. Before that, I was a Staff Research Engineer in the machine learning research group at <a target="_blank" href="https://www.arm.com/resources/research" rel="nofollow">ARM Research</a>. I completed my PhD in Electrical Engineering in 2018 at the University of California San-Diego. I was supervised by <a target="_blank" href="http://dsp.ucsd.edu/home/" rel="nofollow">Prof. Bhaskar Rao</a> and co-advised by <a target="_blank" href="http://videoprocessing.ucsd.edu/" rel="nofollow">Prof. Truong Nguyen</a>. Before UCSD, I completed my B.S. and M.S. (supervised by <a target="_blank" href="http://www.ifp.illinois.edu/~moulin/" rel="nofollow">Prof. Pierre Moulin</a>) in Electrical Engineering at the University of Illinois Urbana-Champaign.
+    <header class="intro">
+      <div class="intro-grid">
+        <div>
+          <h1 class="name">Igor Fedorov</h1>
+          <p class="role">Pod / Tech Lead &amp; AI Research Scientist, Meta</p>
+          <div class="bio">
+            <p>
+              I am an AI Research Scientist at Meta, where I am a tech lead for large language model
+              compression and inference optimization for edge use cases. I have also been responsible
+              for algorithm research and software development for neural architecture search on ads
+              recommendation models. Before that, I was a Staff Research Engineer in the machine learning
+              research group at <a target="_blank" rel="noopener" href="https://www.arm.com/resources/research">ARM Research</a>.
+              I completed my PhD in Electrical Engineering in 2018 at the University of California San Diego,
+              supervised by <a target="_blank" rel="noopener" href="http://dsp.ucsd.edu/home/">Prof. Bhaskar Rao</a>
+              and co-advised by <a target="_blank" rel="noopener" href="http://videoprocessing.ucsd.edu/">Prof. Truong Nguyen</a>.
+              Before UCSD, I completed my B.S. and M.S. (supervised by
+              <a target="_blank" rel="noopener" href="http://www.ifp.illinois.edu/~moulin/">Prof. Pierre Moulin</a>)
+              in Electrical Engineering at the University of Illinois Urbana-Champaign.
+            </p>
+            <p>
+              I am lucky to be married to
+              <a target="_blank" rel="noopener" href="https://sites.google.com/view/katarinafedorov?pli=1">Katarina Fedorov</a>.
+            </p>
+          </div>
+          <nav class="links">
+            <a target="_blank" rel="noopener" href="IgorFedorovResume.pdf">CV</a>
+            <a href="mailto:fedorov.uofi@gmail.com">Email</a>
+            <a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=K39YcPYAAAAJ&amp;hl=en">Google Scholar</a>
+            <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/igor-fedorov-43835790">LinkedIn</a>
+          </nav>
+        </div>
+        <img class="headshot" src="cover_photo.jpg" alt="Igor Fedorov">
+      </div>
+    </header>
 
-  <p>
-I am lucky to be married to <a target="_blank" href="https://sites.google.com/view/katarinafedorov?pli=1">Katarina Fedorov</a>.
-</p>
+    <section>
+      <div class="section-head">
+        <h2>Research &amp; Patents</h2>
+        <span class="rule"></span>
+        <span class="count">40 entries</span>
+      </div>
 
-		            <p align=center>
-                  <a target="_blank" href="Resume.pdf">cv</a> /
-		              <a target="_blank" href="mailto:fedorov.uofi@gmail.com">email</a> /
-                  <a target="_blank" href="https://scholar.google.com/citations?user=K39YcPYAAAAJ&amp;hl=en">google scholar</a> /
-                  <a target="_blank" href="https://www.linkedin.com/in/igor-fedorov-43835790">linkedin</a>
-		            </p>
-              </td>
-              <td width="20%">
-                <br><br>
-  		          <img width="120%" src="cover_photo.jpg" alt="A M">
-	           </td>
-            </tr> 
-          </table>
+      <!--
+        To add a publication, copy one <article class="pub"> block and edit it.
+        Use class "thumb empty" with no <img> when there is no teaser image.
+        Wrap your own name with <span class="me">I. Fedorov</span>.
+      -->
+      <div class="pubs">
 
-          <table id="heading" width="120%" align="center" border="0" cellspacing="0" cellpadding="20">
-            <tr>
-              <td>
-                <font size="5">Research / Patents</font>
-              </td>
-            </tr>
-          </table>
+        <article class="pub">
+          <div class="thumb empty"></div>
+          <div>
+            <p class="pub-title">MobileLLM-Flash: Latency-Guided On-Device LLM Design for Industry Scale Deployment</p>
+            <p class="authors">Hanxian Huang*, <span class="me">Igor Fedorov*</span>, Andrey Gromov, Bernard Beckerman, Naveen Suda, David Eriksson, Maximilian Balandat, Rylan Conway, Patrick Huber, Chinnadhurai Sankar, Ayushi Dalmia, Zechun Liu, Lemeng Wu, Tarek Elgamal, Adithya Sagar, Vikas Chandra, Raghuraman Krishnamoorthi</p>
+            <span class="venue">ACL 2026</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2603.15954">Paper</a></div>
+          </div>
+        </article>
 
-      	  <table id="workworkwork" width="100%" align="center" border="0" cellpadding="20">
+        <article class="pub">
+          <div class="thumb empty"></div>
+          <div>
+            <p class="pub-title">Short Data, Long Context: Distilling Positional Knowledge in Transformers</p>
+            <p class="authors">Patrick Huber, Ernie Chang, Chinnadhurai Sankar, Rylan Conway, <span class="me">Igor Fedorov</span>, Md Rifat Arefin, Adithya Sagar</p>
+            <span class="venue">arXiv 2026</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2604.06070">Paper</a></div>
+          </div>
+        </article>
 
-<tr id="piggyback">
-<td width="25%" valign="top">
-<img id="teaser" src="spinquant_teaser.png">
-</td>
-<td width="75%" valign="center">
-<p>
-<b>SpinQuant: LLM Quantization with Learned Rotations</b>
-<br>
-Zechun Liu, Changsheng Zhao, <strong>Igor Fedorov</strong>, Bilge Soran, Dhruv Choudhary, Raghuraman Krishnamoorthi, Vikas Chandra, Yuandong Tian, Tijmen Blankevoort
-<br>
-<i>ICLR, 2025</i><br>
-<a target="_blank" href="https://arxiv.org/abs/2405.16406">[Paper]</a> 
-</p>
-</td>
-</tr>
-		  
-<tr id="piggyback">
-<td width="25%" valign="top">
-<img id="teaser" src="llama_guard_teaser.png">
-</td>
-<td width="75%" valign="center">
-<p>
-<b>Llama Guard 3-1B-INT4: Compact and Efficient Safeguard for Human-AI Conversations</b>
-<br>
-<strong>Igor Fedorov</strong>, Kate Plawiak, Lemeng Wu, Tarek Elgamal, Naveen Suda, Eric Smith, Hongyuan Zhan, Jianfeng Chi, Yuriy Hulovatyy, Kimish Patel, Zechun Liu, Changsheng Zhao, Yangyang Shi, Tijmen Blankevoort, Mahesh Pasupuleti, Bilge Soran, Zacharie Delpierre Coudert, Rachad Alao, Raghuraman Krishnamoorthi, Vikas Chandra
-<br>
-<i>Arxiv, 2024</i><br>
-<a target="_blank" href="https://arxiv.org/abs/2411.17713">[Paper]</a> 
-</p>
-</td>
-</tr>
-		  
-<tr id="piggyback">
-<td width="25%" valign="top">
-<img id="teaser" src="mobilellm_teaser.png">
-</td>
-<td width="75%" valign="center">
-<p>
-<b>MobileLLM: Optimizing Sub-billion Parameter Language Models for On-Device Use Cases</b>
-<br>
-Z. Liu, C. Zhao, F. Iandola, C. Lai, Y. Tian, <strong>I. Fedorov</strong>, Y. Xiong, E. Chang, Y. Shi, R. Krishnamoorthi, L. Lai, V. Chandra
-<br>
-<i>ICML, 2024</i><br>
-<a target="_blank" href="https://arxiv.org/pdf/2402.14905">[Paper]</a> 
-</p>
-</td>
-</tr>
+        <article class="pub">
+          <div class="thumb empty"></div>
+          <div>
+            <p class="pub-title">MobileLLM-Pro Technical Report</p>
+            <p class="authors">Patrick Huber, Ernie Chang, Wei Wen, <span class="me">Igor Fedorov</span>, Tarek Elgamal, Hanxian Huang, Naveen Suda, Chinnadhurai Sankar, Vish Vogeti, Yanghan Wang, Alex Gladkov, Kai Sheng Tai, Abdelrahman Elogeel, Tarek Hefny, Vikas Chandra, Ahmed Aly, Anuj Kumar, Raghuraman Krishnamoorthi, Adithya Sagar</p>
+            <span class="venue">arXiv 2025</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2511.06719">Paper</a></div>
+          </div>
+        </article>
 
-		  
-<tr id="piggyback">
-<td width="25%" valign="top">
-<img id="teaser" src="book_chapter_teaser.png">
-</td>
-<td width="75%" valign="center">
-<p>
-  <b>Dictionaries in machine learning</b><br>
-  K. Kreutz-Delgado, B.D. Rao, <strong>I. Fedorov</strong>, S. Das<br>
-  <i>Signal Processing and Machine Learning Theory, 2024</i><br>
-  <a target="_blank" href="https://www.amazon.com/Signal-Processing-Machine-Learning-Theory/dp/0323917720/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1689886003&sr=8-4">[Book]</a> 
-</p>
-</td>
-</tr>
+        <article class="pub">
+          <div class="thumb"><img src="spinquant_teaser.png" alt="SpinQuant"></div>
+          <div>
+            <p class="pub-title">SpinQuant: LLM Quantization with Learned Rotations</p>
+            <p class="authors">Zechun Liu, Changsheng Zhao, <span class="me">Igor Fedorov</span>, Bilge Soran, Dhruv Choudhary, Raghuraman Krishnamoorthi, Vikas Chandra, Yuandong Tian, Tijmen Blankevoort</p>
+            <span class="venue">ICLR 2025</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2405.16406">Paper</a></div>
+          </div>
+        </article>
 
-<tr id="piggyback">
-<td width="25%" valign="top">
-<img id="teaser" src="rankitect_teaser.png">
-</td>
-<td width="75%" valign="center">
-<p>
-<b>Rankitect: Ranking Architecture Search Battling World-class Engineers at Meta Scale</b>
-<br>
-W. Wen, K. Liu, <strong>I. Fedorov</strong>, X. Zhang, H. Yin, W. Chu, K. Hassani, M. Sun, J. Liu, X. Wang, L. Jiang, Y. Chen, B. Zhang, X. Liu, D. Cheng, Z. Chen, G. Zhao, F. Han, J. Yang, Y. Hao, L. Xiong, W. Chen
-<br>
-<i>Arxiv, 2023</i><br>
-<a target="_blank" href="https://arxiv.org/abs/2311.08430">[Paper]</a> 
-</p>
-</td>
-</tr>
+        <article class="pub">
+          <div class="thumb"><img src="llama_guard_teaser.png" alt="Llama Guard 3-1B-INT4"></div>
+          <div>
+            <p class="pub-title">Llama Guard 3-1B-INT4: Compact and Efficient Safeguard for Human-AI Conversations</p>
+            <p class="authors"><span class="me">Igor Fedorov</span>, Kate Plawiak, Lemeng Wu, Tarek Elgamal, Naveen Suda, Eric Smith, Hongyuan Zhan, Jianfeng Chi, Yuriy Hulovatyy, Kimish Patel, Zechun Liu, Changsheng Zhao, Yangyang Shi, Tijmen Blankevoort, Mahesh Pasupuleti, Bilge Soran, Zacharie Delpierre Coudert, Rachad Alao, Raghuraman Krishnamoorthi, Vikas Chandra</p>
+            <span class="venue">arXiv 2024</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2411.17713">Paper</a></div>
+          </div>
+        </article>
 
-<tr id="piggyback">
-<td width="25%" valign="top">
-<img id="teaser" src="sigeo_teaser.png">
-</td>
-<td width="75%" valign="center">
-<p>
-<b>SiGeo: Sub-One-Shot NAS via Information Theory and Geometry of Loss Landscape</b>
-<br>
-H. Zheng, K. Liu, <strong>I. Fedorov</strong>, X. Zhang, W. Chen, W. Wen
-<br>
-<i>Arxiv, 2023</i><br>
-<a target="_blank" href="https://arxiv.org/pdf/2311.13169">[Paper]</a> 
-</p>
-</td>
-</tr>
+        <article class="pub">
+          <div class="thumb"><img src="mobilellm_teaser.png" alt="MobileLLM"></div>
+          <div>
+            <p class="pub-title">MobileLLM: Optimizing Sub-billion Parameter Language Models for On-Device Use Cases</p>
+            <p class="authors">Z. Liu, C. Zhao, F. Iandola, C. Lai, Y. Tian, <span class="me">I. Fedorov</span>, Y. Xiong, E. Chang, Y. Shi, R. Krishnamoorthi, L. Lai, V. Chandra</p>
+            <span class="venue">ICML 2024</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2402.14905">Paper</a></div>
+          </div>
+        </article>
 
-<tr id="piggyback">
-<td width="25%" valign="top">
-<img id="teaser" src="distnas_teaser.png">
-</td>
-<td width="75%" valign="center">
-<p>
-<b>DistDNAS: Search Efficient Feature Interactions within 2 Hours</b>
-<br>
-T. Zhang, W. Wen, <strong>I. Fedorov</strong>, X. Liu, B. Zhang, F. Han, W. Chen, Y. Han, F. Yan, H. Li, Y. Chen
-<br>
-<i>Arxiv, 2023</i><br>
-<a target="_blank" href="https://arxiv.org/abs/2311.00231">[Paper]</a> 
-</p>
-</td>
-</tr>
-		  
-<tr id="piggyback">
-<td width="25%" valign="top">
-<img id="teaser" src="perfsage_teaser.png">
-</td>
-<td width="75%" valign="center">
-<p>
-  <b>PerfSAGE: Generalized Inference Performance Predictor for Arbitrary Deep Learning Models on Edge Devices</b><br>
-  Y. Chai, D. Tripathy, C. Zhou, D. Gope, <strong>I. Fedorov</strong>, R. Matas, D. Brooks, G. Wei, P. Whatmough <br>
-  <i>ArXiv, 2023</i><br>
-  <a target="_blank" href="https://arxiv.org/pdf/2301.10999.pdf">[paper]</a> 
-</p>
-</td>
-</tr>
-	
-	<tr id="piggyback">
-              <td width="25%" valign="top">
-                <img id="teaser" src="iclr2023_teaser.png">
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>Efficient Edge Inference by Selective Query</b><br>
-                  A. Kag, <strong>I. Fedorov</strong>, A. Gangrade, P. N. Whatmough, V. Saligrama <br>
-                  <i>ICLR, 2023</i><br>
-                  <a target="_blank" href="https://openreview.net/forum?id=jpR98ZdIm2q">[paper]</a> 
-                </p>
-              </td>
-            </tr>
-		  
-	<tr id="piggyback">
-              <td width="25%" valign="top">
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>Error detection</b><br>
-                  M. Haddon, <strong>I. Fedorov</strong>, R. Jeyapaul, P. N. Whatmough, Z. Liu<br>
-                  <i>US Patent Application, 2022</i><br>
-                </p>
-              </td>
-            </tr>
-		  
-	<tr id="piggyback">
-              <td width="25%" valign="top">
-                <img id="teaser" src="udc_teaser.png">
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>UDC: Unified DNAS for Compressible TinyML Models</b><br>
-                  <strong>I. Fedorov</strong>, R. M. Navarro, H. Tann, C. Zhou, M. Mattina, P. N. Whatmough<br>
-                  <i>NeurIPS, 2022</i><br>
-                  <a target="_blank" href="https://arxiv.org/abs/2201.05842">[paper]</a> 
-                </p>
-              </td>
-            </tr>
-		  
-	<tr id="piggyback">
-              <td width="25%" valign="top">
-                <img id="teaser" src="restructurable_teaser.png">
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>Restructurable Activation Networks</b><br>
-                  K. Bhardwaj, J. Ward, C. Tung, D. Gope, L. Meng, <strong>I. Fedorov</strong>, A. Chalfin, P. Whatmough, D. Loh <br>
-                  <i>ArXiv, 2022</i><br>
-                  <a target="_blank" href="https://arxiv.org/pdf/2208.08562.pdf">[paper]</a> 
-                </p>
-              </td>
-            </tr>
-		  
-	<tr id="piggyback">
-              <td width="25%" valign="top">
-                <img id="teaser" src="dynn_teaser.png">
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>Achieving High TinyML Accuracy through Selective Cloud Interactions</b><br>
-                  A. Kag, <strong>I. Fedorov</strong>, A. Gangrade, P. N. Whatmough, V. Saligrama <br>
-                  <i>ICML DyNN workshop, 2022</i><br>
-                  <a target="_blank" href="https://dynn-icml2022.github.io/spapers/paper_2.pdf">[paper]</a> 
-                </p>
-              </td>
-            </tr>
-		  
-	<tr id="piggyback">
-              <td width="25%" valign="top">
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>Neural network system and training method</b><br>
-                  <strong>I. Fedorov</strong>, P. Whatmough<br>
-                  <i>US Patent Application, 2022</i><br>
-                </p>
-              </td>
-            </tr>
-		  
-	<tr id="piggyback">
-              <td width="25%" valign="top">
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b> A unified neural network optimization framework</b><br>
-                  <strong>I. Fedorov</strong>, R. Matas, C. Zhou, H. Tann, P. Whatmough, M. Mattina <br>
-                  <i>US Patent Application, 2022</i><br>
-                </p>
-              </td>
-            </tr>
-	
-	   <tr id="piggyback">
-              <td width="25%" valign="top">
-                <img id="teaser" src="micronets.png">
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>MicroNets: Neural Network Architectures for Deploying TinyML Applications on Commodity Microcontrollers</b><br>
-                  C. Banbury*, C. Zhou*, <strong>I. Fedorov*</strong>, R. M. Navarro, U. Thakker, D. Gope, V. J. Reddi, M. Mattina, P. N. Whatmough<br>
-                  <i>MLSys, 2021</i><br>
-                  <a target="_blank" href="https://arxiv.org/abs/2010.11267">[paper]</a> 
-		  <a target="_blank" href="https://github.com/ARM-software/ML-zoo">[models]</a> 
-		  <a target="_blank" href="https://community.arm.com/developer/research/b/articles/posts/neural-network-architectures-for-deploying-tinyml-applications-on-commodity-microcontrollers">[blog1]</a>
-		<a target="_blank" href="https://community.arm.com/arm-community-blogs/b/ai-and-ml-blog/posts/image-recognition-on-arm-powered-microcontrollers">[blog2]</a>
-                </p>
-              </td>
-            </tr>
+        <article class="pub">
+          <div class="thumb"><img src="book_chapter_teaser.png" alt="Dictionaries in machine learning"></div>
+          <div>
+            <p class="pub-title">Dictionaries in Machine Learning</p>
+            <p class="authors">K. Kreutz-Delgado, B. D. Rao, <span class="me">I. Fedorov</span>, S. Das</p>
+            <span class="venue">Signal Processing and Machine Learning Theory, 2024</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://www.amazon.com/Signal-Processing-Machine-Learning-Theory/dp/0323917720/">Book</a></div>
+          </div>
+        </article>
 
-       <tr id="piggyback">
-              <td width="25%" valign="top">
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>Image denoising neural network architecture and method of training the same</b><br>
-                  M. El-Khamy, <strong>I. Fedorov</strong>, J. Lee<br>
-                  <i>US Patent, 2020</i><br>
-                  <a target="_blank" href="https://patentimages.storage.googleapis.com/cb/65/ff/b698fb1fdbb9a2/US10726525.pdf">[patent]</a>
-                </p>
-              </td>
-            </tr>
-		  
-	   <tr id="piggyback">
-              <td width="25%" valign="top">
-                <img id="teaser" src="tinylstm.png">
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>TinyLSTMs: Efficient Neural Speech Enhancement for Hearing Aids</b><br>
-                  <strong>I. Fedorov</strong>, M. Stamenovic, C. Jensen, L. Yang, A. Mandell, Y. Gan, M. Mattina, P. N. Whatmough<br>
-                  <i>INTERSPEECH, 2020</i><br>
-                  <a target="_blank" href="https://arxiv.org/abs/2005.11138">[paper]</a>
-                </p>
-              </td>
-            </tr>
-		  
-		  
-      	  	<tr id="piggyback">
-              <td width="25%" valign="top">
-                <img id="teaser" src="ssgd.png">
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>SSGD: Sparsity-promoting Stochastic Gradient Descent Algorithm for Unbiased DNN Pruning</b><br>
-                  C. Lee, <strong>I. Fedorov</strong>, B. D. Rao, H. Garudadri<br>
-                  <i>IEEE International Conference on Acoustics, Speech, and Signal Processing, 2020</i><br>
-                  <a target="_blank" href="https://ieeexplore.ieee.org/document/9054436">[paper]</a>
-                </p>
-              </td>
-            </tr>
+        <article class="pub">
+          <div class="thumb"><img src="rankitect_teaser.png" alt="Rankitect"></div>
+          <div>
+            <p class="pub-title">Rankitect: Ranking Architecture Search Battling World-class Engineers at Meta Scale</p>
+            <p class="authors">W. Wen, K. Liu, <span class="me">I. Fedorov</span>, X. Zhang, H. Yin, W. Chu, K. Hassani, M. Sun, J. Liu, X. Wang, L. Jiang, Y. Chen, B. Zhang, X. Liu, D. Cheng, Z. Chen, G. Zhao, F. Han, J. Yang, Y. Hao, L. Xiong, W. Chen</p>
+            <span class="venue">arXiv 2023</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2311.08430">Paper</a></div>
+          </div>
+        </article>
 
-      	  	<tr id="piggyback">
-              <td width="25%" valign="top">
-                <img id="teaser" src="mango.png">
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>Mango: A Python Library for Parallel Hyperparameter Tuning</b><br>
-                  S. Sandha, M. Aggarwal, <strong>I. Fedorov</strong>, M. Srivastava<br>
-                  <i>IEEE International Conference on Acoustics, Speech, and Signal Processing, 2020</i><br>
-                  <a target="_blank" href="https://ieeexplore.ieee.org/document/9054609">[paper]</a>
-                </p>
-              </td>
-            </tr>
-          
-          <tr id="piggyback">
-              <td width="25%" valign="top">
-                <img id="teaser" src="cifar_wm1.png">
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>SpArSe: Sparse Architecture Search for CNNs on Resource-Constrained Microcontrollers</b><br>
-                  <strong>I. Fedorov</strong>, R. P. Adams, M. Mattina, P. N. Whatmough <br>
-                  <i>Proc. of the Conference on Neural Information Processing Systems (NeurIPS), 2019</i><br>
-                  <a target="_blank" href="https://arxiv.org/abs/1905.12107">[paper]</a> <a target="_blank" href="https://www.youtube.com/watch?v=FFBGzOsJ0Bk&t=6s">[youtube]</a>
-                </p>
-              </td>
-            </tr>
+        <article class="pub">
+          <div class="thumb"><img src="sigeo_teaser.png" alt="SiGeo"></div>
+          <div>
+            <p class="pub-title">SiGeo: Sub-One-Shot NAS via Information Theory and Geometry of Loss Landscape</p>
+            <p class="authors">H. Zheng, K. Liu, <span class="me">I. Fedorov</span>, X. Zhang, W. Chen, W. Wen</p>
+            <span class="venue">arXiv 2023</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2311.13169">Paper</a></div>
+          </div>
+        </article>
 
-            <tr id="piggyback">
-              <td width="25%" valign="top">
-                
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>Pushing the limits of RNN Compression</b><br>
-                  U. Thakker, <strong>I. Fedorov</strong>, J. Beu, D. Gope, C. Zhou, G. Dasika, M. Mattina<br>
-                  <i>Workshop on Energy Efficient Machine Learning and Cognitive Computing, 2019</i><br>
-                  <a target="_blank" href="https://arxiv.org/pdf/1910.02558.pdf">[paper]</a>
-                </p>
-              </td>
-            </tr>
+        <article class="pub">
+          <div class="thumb"><img src="distnas_teaser.png" alt="DistDNAS"></div>
+          <div>
+            <p class="pub-title">DistDNAS: Search Efficient Feature Interactions within 2 Hours</p>
+            <p class="authors">T. Zhang, W. Wen, <span class="me">I. Fedorov</span>, X. Liu, B. Zhang, F. Han, W. Chen, Y. Han, F. Yan, H. Li, Y. Chen</p>
+            <span class="venue">arXiv 2023</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2311.00231">Paper</a></div>
+          </div>
+        </article>
 
-             <tr id="piggyback">
-              <td width="25%" valign="top">
-                
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>Compressing RNNs for IoT devices by 15-38x using Kronecker Products</b><br>
-                  U. Thakker, J. Beu, D. Gope, C. Zhou, <strong>I. Fedorov</strong>, G. Dasika, M. Mattina<br>
-                  <i>arXiv, 2019</i><br>
-                  <a target="_blank" href="https://arxiv.org/pdf/1906.02876.pdf">[paper]</a>
-                </p>
-              </td>
-            </tr>
+        <article class="pub">
+          <div class="thumb"><img src="perfsage_teaser.png" alt="PerfSAGE"></div>
+          <div>
+            <p class="pub-title">PerfSAGE: Generalized Inference Performance Predictor for Arbitrary Deep Learning Models on Edge Devices</p>
+            <p class="authors">Y. Chai, D. Tripathy, C. Zhou, D. Gope, <span class="me">I. Fedorov</span>, R. Matas, D. Brooks, G. Wei, P. Whatmough</p>
+            <span class="venue">arXiv 2023</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2301.10999.pdf">Paper</a></div>
+          </div>
+        </article>
 
-            <tr id="piggyback">
-              <td width="25%" valign="top">
-                
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>Structured Learning with Scale Mixture Priors</b><br>
-                  <strong>I. Fedorov</strong> <br>
-                  <i>PhD Thesis</i><br>
-                  <a target="_blank" href="https://escholarship.org/uc/item/0jf3h6x3">[paper]</a>
-                </p>
-              </td>
-            </tr>
+        <article class="pub">
+          <div class="thumb"><img src="iclr2023_teaser.png" alt="Efficient Edge Inference by Selective Query"></div>
+          <div>
+            <p class="pub-title">Efficient Edge Inference by Selective Query</p>
+            <p class="authors">A. Kag, <span class="me">I. Fedorov</span>, A. Gangrade, P. N. Whatmough, V. Saligrama</p>
+            <span class="venue">ICLR 2023</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=jpR98ZdIm2q">Paper</a></div>
+          </div>
+        </article>
 
+        <article class="pub">
+          <div class="thumb empty"></div>
+          <div>
+            <p class="pub-title">Error Detection</p>
+            <p class="authors">M. Haddon, <span class="me">I. Fedorov</span>, R. Jeyapaul, P. N. Whatmough, Z. Liu</p>
+            <span class="venue">US Patent Application, 2022</span>
+          </div>
+        </article>
 
-            <tr id="piggyback">
-              <td width="25%" valign="top">
-                <img id="teaser" src="msbdl_preview.png">
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>Multimodal Sparse Bayesian Dictionary Learning</b><br>
-                  <strong>I. Fedorov</strong>, B. D. Rao <br>
-                  <i>Arxiv preprint</i><br>
-                  <a target="_blank" href="https://arxiv.org/pdf/1804.03740.pdf">[paper]</a>
-                </p>
-              </td>
-            </tr>
+        <article class="pub">
+          <div class="thumb"><img src="udc_teaser.png" alt="UDC"></div>
+          <div>
+            <p class="pub-title">UDC: Unified DNAS for Compressible TinyML Models</p>
+            <p class="authors"><span class="me">I. Fedorov</span>, R. M. Navarro, H. Tann, C. Zhou, M. Mattina, P. N. Whatmough</p>
+            <span class="venue">NeurIPS 2022</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2201.05842">Paper</a></div>
+          </div>
+        </article>
 
-              <tr id="piggyback">
-              <td width="25%" valign="top">
-                <img id="teaser" src="msbdl_icassp_preview.png">
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>Multimodal Sparse Bayesian Dictionary Learning Applied to Multimodal Data Classification</b><br>
-                  <strong>I. Fedorov</strong>, B. D. Rao, T. Q. Nguyen<br> 
-                  <i>IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2016</i><br> 
-                  <a target="_blank" href="http://ieeexplore.ieee.org/document/7952554/">[paper]</a>
-                </p>
-              </td>
-            </tr>
+        <article class="pub">
+          <div class="thumb"><img src="restructurable_teaser.png" alt="Restructurable Activation Networks"></div>
+          <div>
+            <p class="pub-title">Restructurable Activation Networks</p>
+            <p class="authors">K. Bhardwaj, J. Ward, C. Tung, D. Gope, L. Meng, <span class="me">I. Fedorov</span>, A. Chalfin, P. Whatmough, D. Loh</p>
+            <span class="venue">arXiv 2022</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2208.08562.pdf">Paper</a></div>
+          </div>
+        </article>
 
-            <tr id="packnet">
-              <td width="25%" valign="top">
-                <img id="teaser" src="sparse_dnn_preview.png">
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>Re-weighted Learning for Sparsifying Deep Neural Networks</b><br>
-                  <strong>I. Fedorov</strong>, B. D. Rao<br>
-			<i>Arxiv preprint, 2018 <br>
-                  <a target="_blank" href="https://arxiv.org/pdf/1802.01616.pdf">[paper]</a>
-                </p>
-              </td>
-            </tr>
+        <article class="pub">
+          <div class="thumb"><img src="dynn_teaser.png" alt="Selective Cloud Interactions"></div>
+          <div>
+            <p class="pub-title">Achieving High TinyML Accuracy through Selective Cloud Interactions</p>
+            <p class="authors">A. Kag, <span class="me">I. Fedorov</span>, A. Gangrade, P. N. Whatmough, V. Saligrama</p>
+            <span class="venue">ICML DyNN Workshop, 2022</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://dynn-icml2022.github.io/spapers/paper_2.pdf">Paper</a></div>
+          </div>
+        </article>
 
-            <tr id="piggyback">
-              <td width="25%" valign="top">
-                <img id="teaser" src="nmf_preview.png">
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>A Unified Framework for Sparse Non-Negative Least Squares using Multiplicative Updates and the Non-Negative Matrix Factorization Problem</b><br>
-                  <strong>I. Fedorov</strong>, A. Nalci, R. Giri, B. D. Rao, T. Q. Nguyen, H. Garudadri
-                  <br> 
-                  <i>Signal Processing, 2018</i>
-                  <br> 
-                  <a target="_blank" href="http://authors.elsevier.com/sd/article/S0165168418300033">[paper]</a> <a target="_blank" href="https://bitbucket.org/fedorov1/nmfcode/src/master/">[code]</a>
-                </p>
-              </td>
-            </tr>
+        <article class="pub">
+          <div class="thumb empty"></div>
+          <div>
+            <p class="pub-title">Neural Network System and Training Method</p>
+            <p class="authors"><span class="me">I. Fedorov</span>, P. Whatmough</p>
+            <span class="venue">US Patent Application, 2022</span>
+          </div>
+        </article>
 
-            <tr id="piggyback">
-              <td width="25%" valign="top">
-                <img id="teaser" src="rsbl_preview.png">
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>Rectified Gaussian Scale Mixtures and the Sparse Non-Negative Least Squares Problem</b>
-                  <br>
-                  A. Nalci, <strong>I. Fedorov</strong>, M. Al-Shoukairi, T. T. Liu, B. D. Rao
-                  <br> 
-                  <i>IEEE Transactions on Signal Processing, 2018</i>
-                  <br> 
-                  <a target="_blank" href="http://ieeexplore.ieee.org/document/8332497/">[paper]</a>
-                </p>
-              </td>
-            </tr>
+        <article class="pub">
+          <div class="thumb empty"></div>
+          <div>
+            <p class="pub-title">A Unified Neural Network Optimization Framework</p>
+            <p class="authors"><span class="me">I. Fedorov</span>, R. Matas, C. Zhou, H. Tann, P. Whatmough, M. Mattina</p>
+            <span class="venue">US Patent Application, 2022</span>
+          </div>
+        </article>
 
-            <tr id="piggyback">
-              <td width="25%" valign="top">
-                <img id="teaser" src="rsm_preview.png">
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>Relevance Subject Machine: A Novel Person Re-Identification Framework</b>
-                  <br>
-                  <strong>I. Fedorov</strong>, R. Giri, B. D. Rao, T. Q. Nguyen
-                  <br> 
-                  <i>arxiv preprint, 2017</i>
-                  <br> 
-                  <a target="_blank" href="https://arxiv.org/abs/1703.10645">[paper]</a>
-                </p>
-              </td>
-            </tr>
+        <article class="pub">
+          <div class="thumb empty"></div>
+          <div>
+            <p class="pub-title">System, Devices and/or Processes for Defining a Search Space for Neural Network Processing Device Architectures</p>
+            <p class="authors">H. Tann, R. Navarro, <span class="me">I. Fedorov</span>, C. Zhou, P. Whatmough, M. Mattina</p>
+            <span class="venue">US Patent Application</span>
+          </div>
+        </article>
 
-            <tr id="piggyback">
-              <td width="25%" valign="top">
-                <img id="teaser" src="robust_sbl_preview.png">
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>Robust Bayesian Method for Simultaneous Block Sparse Signal Recovery with Applications to Face Recognition</b>
-                  <br>
-                  <strong>I. Fedorov</strong>, R. Giri, B. D. Rao, T. Q. Nguyen
-                  <br> 
-                  <i>IEEE International Conference on Image Processing (ICIP), 2016</i>
-                  <br> 
-                  <a target="_blank" href="https://ieeexplore.ieee.org/abstract/document/7533085/">[paper]</a>
-                </p>
-              </td>
-            </tr>
+        <article class="pub">
+          <div class="thumb"><img src="micronets.png" alt="MicroNets"></div>
+          <div>
+            <p class="pub-title">MicroNets: Neural Network Architectures for Deploying TinyML Applications on Commodity Microcontrollers</p>
+            <p class="authors">C. Banbury*, C. Zhou*, <span class="me">I. Fedorov*</span>, R. M. Navarro, U. Thakker, D. Gope, V. J. Reddi, M. Mattina, P. N. Whatmough</p>
+            <span class="venue">MLSys 2021</span>
+            <div class="pub-links">
+              <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2010.11267">Paper</a>
+              <a target="_blank" rel="noopener" href="https://github.com/ARM-software/ML-zoo">Models</a>
+              <a target="_blank" rel="noopener" href="https://community.arm.com/developer/research/b/articles/posts/neural-network-architectures-for-deploying-tinyml-applications-on-commodity-microcontrollers">Blog 1</a>
+              <a target="_blank" rel="noopener" href="https://community.arm.com/arm-community-blogs/b/ai-and-ml-blog/posts/image-recognition-on-arm-powered-microcontrollers">Blog 2</a>
+            </div>
+          </div>
+        </article>
 
-            <tr id="piggyback">
-              <td width="25%" valign="top">
-                <img id="teaser" src="reconstruction.png">
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>Image Reconstruction under Imaging Time Constraints</b>
-                  <br>
-                  <strong>I. Fedorov</strong>, S. Obrzut, B. Song, B. D. Rao
-                  <br> 
-                  <i>51st Asilomar Conference on Signals, Systems, and Computers, 2017</i>
-                  <br> 
-                  <a target="_blank" href="https://ieeexplore.ieee.org/document/8335626/">[paper]</a>
-                </p>
-              </td>
-            </tr>
+        <article class="pub">
+          <div class="thumb empty"></div>
+          <div>
+            <p class="pub-title">Image Denoising Neural Network Architecture and Method of Training the Same</p>
+            <p class="authors">M. El-Khamy, <span class="me">I. Fedorov</span>, J. Lee</p>
+            <span class="venue">US Patent 2020</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://patentimages.storage.googleapis.com/cb/65/ff/b698fb1fdbb9a2/US10726525.pdf">Patent</a></div>
+          </div>
+        </article>
 
-          <tr id="piggyback">
-              <td width="25%" valign="top">
-                
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>Total Variation Regularization in I-123 Ioflupane SPECT Reconstruction</b>
-                  <br>
-                  <strong>I. Fedorov</strong>, B. Song, B. D. Rao, I. Levitan, S. Obrzut
-                  <br> 
-                  <i>Journal of Nuclear Medicine, 2017</i>
-                  <br> 
-                  <a target="_blank" href="http://jnm.snmjournals.org/content/58/supplement_1/1357.abstract?sid=ee063d0f-c9a6-4f9a-9a90-eb2eafaf9a94">[paper]</a>
-                </p>
-              </td>
-            </tr>
+        <article class="pub">
+          <div class="thumb"><img src="tinylstm.png" alt="TinyLSTMs"></div>
+          <div>
+            <p class="pub-title">TinyLSTMs: Efficient Neural Speech Enhancement for Hearing Aids</p>
+            <p class="authors"><span class="me">I. Fedorov</span>, M. Stamenovic, C. Jensen, L. Yang, A. Mandell, Y. Gan, M. Mattina, P. N. Whatmough</p>
+            <span class="venue">INTERSPEECH 2020</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2005.11138">Paper</a></div>
+          </div>
+        </article>
 
-            <tr id="piggyback">
-              <td width="25%" valign="top">
-                <img id="teaser" src="ms_thesis_preview.png">
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>Kinect depth video compression for action recognition</b>
-                  <br>
-                  <strong>I. Fedorov</strong>
-                  <br> 
-                  <i>M.S. Thesis, 2014</i>
-                  <br> 
-                  <a target="_blank" href="https://www.ideals.illinois.edu/bitstream/handle/2142/49462/Igor_Fedorov.pdf?sequence=1">[paper]</a>
-                </p>
-              </td>
-            </tr>
+        <article class="pub">
+          <div class="thumb"><img src="ssgd.png" alt="SSGD"></div>
+          <div>
+            <p class="pub-title">SSGD: Sparsity-promoting Stochastic Gradient Descent Algorithm for Unbiased DNN Pruning</p>
+            <p class="authors">C. Lee, <span class="me">I. Fedorov</span>, B. D. Rao, H. Garudadri</p>
+            <span class="venue">ICASSP 2020</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/9054436">Paper</a></div>
+          </div>
+        </article>
 
-            <tr id="piggyback">
-              <td width="25%" valign="top">
-                
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>
-                  Automated Worker Activity Analysis in Indoor Environments for Direct-Work Rate Improvement from long sequences of RGB-D Images</b>
-                  <br>
-                  A. Khosrowpour, <strong>I. Fedorov</strong>, A. Holynski, J. C. Niebles, M. Golparvar-Fard
-                  <br> 
-                  <i>Construction Research Congress, 2014</i>
-                  <br> 
-                  <a target="_blank" href="http://ascelibrary.org/doi/pdf/10.1061/9780784413517.075">[paper]</a>
-                </p>
-              </td>
-            </tr>
+        <article class="pub">
+          <div class="thumb"><img src="mango.png" alt="Mango"></div>
+          <div>
+            <p class="pub-title">Mango: A Python Library for Parallel Hyperparameter Tuning</p>
+            <p class="authors">S. Sandha, M. Aggarwal, <span class="me">I. Fedorov</span>, M. Srivastava</p>
+            <span class="venue">ICASSP 2020</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/9054609">Paper</a></div>
+          </div>
+        </article>
 
-            <tr id="piggyback">
-              <td width="25%" valign="top">
-                
-              </td>
-              <td width="75%" valign="center">
-                <p>
-                  <b>
-                  Power delivery for series connected voltage domains in digital circuits</b>
-                  <br>
-                  P. Shenoy, <strong>I. Fedorov</strong>, T. Neyens, P. Krein
-                  <br> 
-                  <i>International Conference on Energy Aware Computing, 2011</i>
-                  <br> 
-                  <a target="_blank" href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6136698&tag=1">[paper]</a>
-                </p>
-              </td>
-            </tr>
+        <article class="pub">
+          <div class="thumb"><img src="cifar_wm1.png" alt="SpArSe"></div>
+          <div>
+            <p class="pub-title">SpArSe: Sparse Architecture Search for CNNs on Resource-Constrained Microcontrollers</p>
+            <p class="authors"><span class="me">I. Fedorov</span>, R. P. Adams, M. Mattina, P. N. Whatmough</p>
+            <span class="venue">NeurIPS 2019</span>
+            <div class="pub-links">
+              <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1905.12107">Paper</a>
+              <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=FFBGzOsJ0Bk&amp;t=6s">Video</a>
+            </div>
+          </div>
+        </article>
 
+        <article class="pub">
+          <div class="thumb empty"></div>
+          <div>
+            <p class="pub-title">Pushing the Limits of RNN Compression</p>
+            <p class="authors">U. Thakker, <span class="me">I. Fedorov</span>, J. Beu, D. Gope, C. Zhou, G. Dasika, M. Mattina</p>
+            <span class="venue">EMC2 Workshop, 2019</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1910.02558.pdf">Paper</a></div>
+          </div>
+        </article>
 
+        <article class="pub">
+          <div class="thumb empty"></div>
+          <div>
+            <p class="pub-title">Compressing RNNs for IoT Devices by 15-38x using Kronecker Products</p>
+            <p class="authors">U. Thakker, J. Beu, D. Gope, C. Zhou, <span class="me">I. Fedorov</span>, G. Dasika, M. Mattina</p>
+            <span class="venue">arXiv 2019</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1906.02876.pdf">Paper</a></div>
+          </div>
+        </article>
 
-          </table>
-        </td>
-      </tr>
-    </table>
-  </body>
+        <article class="pub">
+          <div class="thumb empty"></div>
+          <div>
+            <p class="pub-title">Structured Learning with Scale Mixture Priors</p>
+            <p class="authors"><span class="me">I. Fedorov</span></p>
+            <span class="venue">PhD Thesis</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://escholarship.org/uc/item/0jf3h6x3">Thesis</a></div>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="thumb"><img src="msbdl_preview.png" alt="Multimodal Sparse Bayesian Dictionary Learning"></div>
+          <div>
+            <p class="pub-title">Multimodal Sparse Bayesian Dictionary Learning</p>
+            <p class="authors"><span class="me">I. Fedorov</span>, B. D. Rao</p>
+            <span class="venue">arXiv preprint</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1804.03740.pdf">Paper</a></div>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="thumb"><img src="msbdl_icassp_preview.png" alt="MSBDL for Multimodal Data Classification"></div>
+          <div>
+            <p class="pub-title">Multimodal Sparse Bayesian Dictionary Learning Applied to Multimodal Data Classification</p>
+            <p class="authors"><span class="me">I. Fedorov</span>, B. D. Rao, T. Q. Nguyen</p>
+            <span class="venue">ICASSP 2016</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="http://ieeexplore.ieee.org/document/7952554/">Paper</a></div>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="thumb"><img src="sparse_dnn_preview.png" alt="Re-weighted Learning for Sparsifying DNNs"></div>
+          <div>
+            <p class="pub-title">Re-weighted Learning for Sparsifying Deep Neural Networks</p>
+            <p class="authors"><span class="me">I. Fedorov</span>, B. D. Rao</p>
+            <span class="venue">arXiv preprint, 2018</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1802.01616.pdf">Paper</a></div>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="thumb"><img src="nmf_preview.png" alt="Sparse Non-Negative Least Squares"></div>
+          <div>
+            <p class="pub-title">A Unified Framework for Sparse Non-Negative Least Squares using Multiplicative Updates and the Non-Negative Matrix Factorization Problem</p>
+            <p class="authors"><span class="me">I. Fedorov</span>, A. Nalci, R. Giri, B. D. Rao, T. Q. Nguyen, H. Garudadri</p>
+            <span class="venue">Signal Processing, 2018</span>
+            <div class="pub-links">
+              <a target="_blank" rel="noopener" href="http://authors.elsevier.com/sd/article/S0165168418300033">Paper</a>
+              <a target="_blank" rel="noopener" href="https://bitbucket.org/fedorov1/nmfcode/src/master/">Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="thumb"><img src="rsbl_preview.png" alt="Rectified Gaussian Scale Mixtures"></div>
+          <div>
+            <p class="pub-title">Rectified Gaussian Scale Mixtures and the Sparse Non-Negative Least Squares Problem</p>
+            <p class="authors">A. Nalci, <span class="me">I. Fedorov</span>, M. Al-Shoukairi, T. T. Liu, B. D. Rao</p>
+            <span class="venue">IEEE Transactions on Signal Processing, 2018</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="http://ieeexplore.ieee.org/document/8332497/">Paper</a></div>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="thumb"><img src="rsm_preview.png" alt="Relevance Subject Machine"></div>
+          <div>
+            <p class="pub-title">Relevance Subject Machine: A Novel Person Re-Identification Framework</p>
+            <p class="authors"><span class="me">I. Fedorov</span>, R. Giri, B. D. Rao, T. Q. Nguyen</p>
+            <span class="venue">arXiv preprint, 2017</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1703.10645">Paper</a></div>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="thumb"><img src="robust_sbl_preview.png" alt="Robust Bayesian Block Sparse Signal Recovery"></div>
+          <div>
+            <p class="pub-title">Robust Bayesian Method for Simultaneous Block Sparse Signal Recovery with Applications to Face Recognition</p>
+            <p class="authors"><span class="me">I. Fedorov</span>, R. Giri, B. D. Rao, T. Q. Nguyen</p>
+            <span class="venue">ICIP 2016</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/7533085/">Paper</a></div>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="thumb"><img src="reconstruction.png" alt="Image Reconstruction under Imaging Time Constraints"></div>
+          <div>
+            <p class="pub-title">Image Reconstruction under Imaging Time Constraints</p>
+            <p class="authors"><span class="me">I. Fedorov</span>, S. Obrzut, B. Song, B. D. Rao</p>
+            <span class="venue">Asilomar Conference, 2017</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/8335626/">Paper</a></div>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="thumb empty"></div>
+          <div>
+            <p class="pub-title">Total Variation Regularization in I-123 Ioflupane SPECT Reconstruction</p>
+            <p class="authors"><span class="me">I. Fedorov</span>, B. Song, B. D. Rao, I. Levitan, S. Obrzut</p>
+            <span class="venue">Journal of Nuclear Medicine, 2017</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="http://jnm.snmjournals.org/content/58/supplement_1/1357.abstract">Paper</a></div>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="thumb"><img src="ms_thesis_preview.png" alt="Kinect depth video compression"></div>
+          <div>
+            <p class="pub-title">Kinect Depth Video Compression for Action Recognition</p>
+            <p class="authors"><span class="me">I. Fedorov</span></p>
+            <span class="venue">M.S. Thesis, 2014</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="https://www.ideals.illinois.edu/bitstream/handle/2142/49462/Igor_Fedorov.pdf?sequence=1">Thesis</a></div>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="thumb empty"></div>
+          <div>
+            <p class="pub-title">Automated Worker Activity Analysis in Indoor Environments for Direct-Work Rate Improvement from Long Sequences of RGB-D Images</p>
+            <p class="authors">A. Khosrowpour, <span class="me">I. Fedorov</span>, A. Holynski, J. C. Niebles, M. Golparvar-Fard</p>
+            <span class="venue">Construction Research Congress, 2014</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="http://ascelibrary.org/doi/pdf/10.1061/9780784413517.075">Paper</a></div>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="thumb empty"></div>
+          <div>
+            <p class="pub-title">Power Delivery for Series Connected Voltage Domains in Digital Circuits</p>
+            <p class="authors">P. Shenoy, <span class="me">I. Fedorov</span>, T. Neyens, P. Krein</p>
+            <span class="venue">Intl. Conference on Energy Aware Computing, 2011</span>
+            <div class="pub-links"><a target="_blank" rel="noopener" href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6136698">Paper</a></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <footer>
+      Igor Fedorov &middot; Pod / Tech Lead &amp; AI Research Scientist, Meta
+    </footer>
+
+  </div>
+</body>
 </html>
